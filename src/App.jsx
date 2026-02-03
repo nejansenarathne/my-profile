@@ -69,6 +69,32 @@ function Icon({ name }) {
       </svg>
     );
   }
+if (name === "download") {
+  return (
+    <svg {...common} aria-hidden="true">
+      <path
+        d="M12 4v9"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+      <path
+        d="M8.5 10.5L12 13.8l3.5-3.3"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5.5 18h13"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        opacity="0.7"
+      />
+    </svg>
+  );
+}
 
   // default = X icon
   return (
@@ -272,6 +298,7 @@ if (loading) {
   const about = Array.isArray(site.about) ? site.about : [];
   const experience = Array.isArray(site.experience) ? site.experience : [];
   const contacts = site.contacts || {};
+  const resumeUrl = site.resumeUrl || "";
 
   return (
     <div className="app">
@@ -288,6 +315,20 @@ if (loading) {
             />
             <h1 className="name">{name}</h1>
             <p className="miniBio">{miniBio}</p>
+{resumeUrl ? (
+  <a
+    className="resumeBtn"
+    href={resumeUrl}
+    target="_blank"
+    rel="noreferrer"
+  >
+    <span>Download Resume</span>
+    <Icon name="download" />
+  </a>
+) : null}
+
+
+
           </div>
 
           <div className="profileBottom">
